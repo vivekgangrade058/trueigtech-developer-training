@@ -1,0 +1,13 @@
+TrueIGTech Developer Training
+
+Today's Practice:
+Git Basics
+
+I learned:
+1. Git initialization
+2. Git status
+3. Git staging
+4. Git commits
+5. Git branches
+6. GitHub remote repositories
+7. Git push and pull
