@@ -1,82 +1,39 @@
-let employees = JSON.parse(localStorage.getItem("employees")) || [
-    {
-        id: 1,
-        name: "Rahul",
-        email: "rahul@gmail.com",
-        department: "Development"
-    },
-    {
-        id: 2,
-        name: "Priya",
-        email: "priya@gmail.com",
-        department: "HR"
-    }
-];
-
-const employeeForm = document.getElementById("employeeForm");
-const employeeList = document.getElementById("employeeList");
-
-function displayEmployees() {
-    employeeList.innerHTML = "";
-
-    employees.forEach(function(employee) {
-        const employeeDiv = document.createElement("div");
-
-        employeeDiv.className = "employee";
-
-        employeeDiv.innerHTML = `
-            <div>
-                <strong>${employee.name}</strong>
-                <p>ID: ${employee.id}</p>
-                <p>Email: ${employee.email}</p>
-                <p>Department: ${employee.department}</p>
-            </div>
-
-            <button class="delete-btn" onclick="deleteEmployee(${employee.id})">
-                Delete
-            </button>
-        `;
-
-        employeeList.appendChild(employeeDiv);
+var emp = [];
+var form = document.getElementById("empform");
+var list = document.getElementById("list");
+function showdata(){
+    list.innerHTML = "";
+    emp.forEach(function(e){
+        var div = document.createElement("div");
+        div.innerHTML = `
+            <p>ID : ${e.id}</p>
+            <p>Name : ${e.name}</p>
+            <p>Department : ${e.department}</p>
+            <button onclick = "deleteEmployee(${e.id})"> DELETE </button>
+        `
+        list.appendChild(div);
     });
 }
-
-employeeForm.addEventListener("submit", function(event) {
+form.addEventListener("submit", function(event){
     event.preventDefault();
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var department = document.getElementById("department").value;
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const department = document.getElementById("department").value;
-
-    if (name === "" || email === "" || department === "") {
-        alert("Please fill all fields");
-        return;
-    }
-
-    const newEmployee = {
-        id: Date.now(),
+    let newemp = {
+        id: emp.length+1, 
         name: name,
         email: email,
-        department: department
+        department: department  
     };
-
-    employees.push(newEmployee);
-
-    localStorage.setItem("employees", JSON.stringify(employees));
-
-    displayEmployees();
-
-    employeeForm.reset();
-});
-
-function deleteEmployee(id) {
-    employees = employees.filter(function(employee) {
-        return employee.id !== id;
-    });
-
-    localStorage.setItem("employees", JSON.stringify(employees));
-
-    displayEmployees();
+    emp.push(newemp);
+    form.reset();
+    showdata();
+})
+function deleteEmployee(id){
+    emp = emp.filter(function(e){
+        return e.id !== id; 
+    })
+    showdata();
 }
-
-displayEmployees();
+showdata();

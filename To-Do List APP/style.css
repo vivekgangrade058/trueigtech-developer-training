@@ -1,0 +1,46 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: red;
+}
+
+.container {
+    width: 400px;
+    margin: 50px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1{
+    text-align: center;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+}
+
+input{
+    flex: 1;
+    padding: 10px;
+}
+
+button{
+    padding: 10px;
+    cursor: pointer;
+}
+
+.task{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: purple;
+}
+
+.delete{
+    background-color: red;
+    color: white;
+    border: none;
+}
